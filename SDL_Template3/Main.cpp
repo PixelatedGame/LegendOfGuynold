@@ -38,7 +38,7 @@ private:
 	Menu * mymenu;
 	Entity * hero;
 	Sprite * Enemy;
-	
+	gui * mygui;
 	
 };
 
@@ -83,6 +83,8 @@ void Game::start() {
 	Enemy = new Sprite(200, 200);
 	mymenu = new Menu();
 
+
+	mygui = new gui(hero);
 	this->running = 1;
 	run();
 }
@@ -114,7 +116,7 @@ void Game::draw() {
 	
 	// fillRect(&Enemy->rect, 255, 255, 0);
 
-	
+	mygui->render();
 
 	SDL_RenderPresent(renderer);
 }

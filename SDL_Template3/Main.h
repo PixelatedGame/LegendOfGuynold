@@ -13,6 +13,7 @@
 #include "globals.h"
 #include "sprite.h"
 #include "Entity.h"
+#include "gui.h"
 #include "res_path.h"
 #include "Menu.h"
 //#include "texture.h"
