@@ -1,5 +1,5 @@
 #include "Menu.h"
-
+#include "globals.h"
 Menu::Menu(){
 
 	rect = { 100, 100, 400, 400 };
