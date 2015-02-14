@@ -1,8 +1,4 @@
 #include "Menu.h"
-#include "Sprite.h"
-#include "texture.h"
-#include "res_path.h"
-#include "globals.h"
 
 Menu::Menu(){
 
@@ -20,35 +16,35 @@ Menu::Menu(){
 }
 
 void Menu::move(int upanddown){
-	int min=0, max=0;
-	switch (mode)
+	int min=0, max;
+	switch (current_mode)
 	{
-	case 0:
+	case MENU_MAIN:
 		max = 2;
 		break;
-	case 1:
+	case MENU_CONTROLEERS:
 		max = 5;
 	}
-	if (upanddown == 1 && state[mode] > min){
-		state[mode] = state[mode] - 1;
-		rect_pointer.y = 216 + state[mode] * 35;
+	if (upanddown == UP && workpoint[current_mode] > min){
+		workpoint[current_mode] = workpoint[current_mode] - 1;
+		rect_pointer.y = 216 + workpoint[current_mode] * 35;
 	}
-	if (upanddown == 2 && state[mode] < max){
-		state[mode] = state[mode] + 1;
-		rect_pointer.y = 216 + state[mode] * 35;
+	if (upanddown == DOWN && workpoint[current_mode] < max){
+		workpoint[current_mode] = workpoint[current_mode] + 1;
+		rect_pointer.y = 216 + workpoint[current_mode] * 35;
 	}
 
 }
 
 void Menu::start(){
-	mode = 0;
-	for (int i:state)
-		state[i] = 0;
-	rect_pointer.y = 216 + state[mode] * 35;
+	current_mode = 0;
+	for (int i:workpoint)
+		workpoint[i] = 0;
+	rect_pointer.y = 216 + workpoint[current_mode] * 35;
 }
 void Menu::render(){
-	if (workpoint != 1){
-		renderTexture(texture, renderer, rect, &clips[mode]);
+	if (state != 1){
+		renderTexture(texture, renderer, rect, &clips[current_mode]);
 		renderTexture(texture_pointer, renderer, rect_pointer, NULL);
 		SDL_Delay(100);
 	}
@@ -57,33 +53,33 @@ void Menu::render(){
 
 void Menu::update(std::map<int, int> &keys, int &work_mode){
 	if (work_mode != 1){
-		workpoint = work_mode;
+		state = work_mode;
 		if (keys[SDLK_ESCAPE]){
-			workpoint = 1;
+			state = GAME;
 			work_mode = 1;
-			this->move(0);
+			this->move(STAY);
 			keys[SDLK_ESCAPE] = 0;
 		}
 
 		if (keys[SDLK_UP]) {
-			this->move(1);
+			this->move(UP);
 		}
 		else if (keys[SDLK_DOWN]) {
-			this->move(2);
+			this->move(DOWN);
 		}
 
 		//actions
 		if (keys[SDLK_RETURN]){
-			switch (mode)
+			switch (current_mode)
 			{
 			case 0:
-				switch (state[mode])
+				switch (workpoint[current_mode])
 				{
 				case 1:
-					mode = 1;
+					current_mode = 1;
 					break;
 				case 2:
-					workpoint = 1;
+					state = 1;
 					work_mode = 1;
 					this->move(0);
 					break;
