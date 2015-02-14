@@ -78,7 +78,6 @@
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="globals.cpp" />
-    <ClCompile Include="Location.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="res_path.cpp" />
@@ -88,7 +87,7 @@
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="globals.h" />
-    <ClInclude Include="Location.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="res_path.h" />
