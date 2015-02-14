@@ -1,5 +1,7 @@
-#include "Main.h"
-
+#include "Sprite.h"
+#include "globals.h"
+#include "SDL_mixer.h"
+#include "res_path.h"
 
 Sprite::Sprite(int ax, int ay, int aw, int ah, std::string sprite_file)
 {
@@ -50,7 +52,8 @@ void Sprite::move(int ax, int ay)
 {
 	
 	int new_moving_direction = 0;
-	bool sprite_has_moved = false;
+	bool sprite_has_moved_in_x = false;
+	bool sprite_has_moved_in_y = false;
 	
 	if (ax < 0) new_moving_direction = face_directions::LEFT;
 	if (ax > 0) new_moving_direction = face_directions::RIGHT;
@@ -60,18 +63,13 @@ void Sprite::move(int ax, int ay)
 
 	bool xWithinScreen = 0 <= rect.x + ax && rect.x + rect.w + ax <= DISPLAY_WIDTH;
 	bool yWithinScreen = 0 <= rect.y + ay && rect.y + rect.h + ay <= DISPLAY_HEIGHT;
-	if (ax && xWithinScreen) sprite_has_moved += isAbleToMove(rect.x, ax); 
-	if (ay && yWithinScreen) sprite_has_moved += isAbleToMove(rect.y, ay);
+	if (ax && xWithinScreen) sprite_has_moved_in_x = isAbleToMove(rect.x, ax); 
+	if (ay && yWithinScreen) sprite_has_moved_in_y = isAbleToMove(rect.y, ay);
 
-	if (sprite_has_moved) {
+	if (sprite_has_moved_in_x || sprite_has_moved_in_y) {
 		moveAnimation(new_moving_direction);
-		
 	}
-	
 	collision_rect = { rect.x + 8, rect.y + 38, collision_rect.w, collision_rect.h };
-	
-	
-	
 }
 
 
@@ -123,7 +121,7 @@ bool Sprite::CheckCollision(const SDL_Rect &rect1)
 
 bool Sprite::isAbleToMove(int &rect_dimension, int amount)
 {
-	bool sprite_has_colided = false;
+	int sprite_has_colided = 0;
 	rect_dimension += amount;
 	collision_rect = { rect.x + 8, rect.y + 38, collision_rect.w, collision_rect.h };
 	for (auto p : sprites)
