@@ -1,1 +1,1 @@
-int g = 0;
+int sssssssg = 0;
