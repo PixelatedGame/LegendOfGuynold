@@ -32,7 +32,8 @@ private:
 	std::map<int, int> keys; // No SDLK_LAST. SDL2 migration guide suggests std::map  
 	int frameSkip;
 	int running;
-	int state = 1;
+	enum state  : int { MENU, GAME };
+	int current_state = GAME;
 	Menu * mymenu;
 	Sprite * hero;
 	Sprite * Enemy;
@@ -105,7 +106,7 @@ void Game::draw() {
 	{
 		p->render();
 	}
-	if (state == 0)
+	if (current_state == MENU)
 		mymenu->render();
 	// fillRect(&hero->rect, 255, 0, 0);
 
@@ -182,7 +183,7 @@ void Game::run() {
 
 
 		//menu 
-		mymenu->update(keys, state);
+		mymenu->update(keys, current_state);
 
 		// sleep?  
 		SDL_Delay(1);
@@ -191,7 +192,7 @@ void Game::run() {
 }
 
 void Game::update() {
-	if (state == 1){
+	if (current_state == GAME){
 		if ((keys[SDLK_LEFT]) && (keys[SDLK_DOWN])) {
 			hero->move(-2, 2);
 		}
@@ -219,7 +220,7 @@ void Game::update() {
 		Enemy->update();
 		//Enter to menu state:
 		if (keys[SDLK_ESCAPE]){
-			state = 0;
+			current_state = MENU;
 			mymenu->start();
 			mymenu->move(0);
 			keys[SDLK_ESCAPE] = 0;

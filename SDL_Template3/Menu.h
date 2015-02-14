@@ -13,7 +13,10 @@
 class Menu{
 	
 public:
-	int mode=0,state[3],workpoint;  //workpoint 0 indicate menu mode, 1 indicate game / state indicate where is the pointer in each mode
+	enum mode {MENU_MAIN=0, MENU_CONTROLEERS, MENU_VIDEO, MENU_SOUNDS};
+	enum state {MENU, GAME};
+	enum upanddown { STAY=0, UP, DOWN };
+	int current_mode=MENU_MAIN,state,workpoint[3];  //workpoint 0 indicate menu mode, 1 indicate game / state indicate where is the pointer in each mode
 	SDL_Rect rect;
 	SDL_Rect rect_pointer;
 	SDL_Rect clips[3] = {};
