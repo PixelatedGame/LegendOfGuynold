@@ -12,6 +12,7 @@
 #include <ostream>
 #include "globals.h"
 #include "sprite.h"
+#include "Entity.h"
 #include "res_path.h"
 #include "Menu.h"
 //#include "texture.h"
