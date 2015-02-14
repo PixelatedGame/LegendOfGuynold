@@ -6,6 +6,8 @@
 #include "Entity.h"
 
 class gui{
+	int const MAX_BAR = 165;
+	int const MIN_BAR = 20;
 	SDL_Rect rect_zen_logo;
 	SDL_Rect rect_live_logo;
 	SDL_Rect rect_zen_bar;
@@ -21,8 +23,9 @@ public:
 	SDL_Texture * texture_zen_bar;
 	SDL_Texture * texture_live_logo;
 	SDL_Texture * texture_zen_logo;
-
 	gui(Entity *hero);
+	int calculate_zen();
+	int calculate_live();
 	void render();
 };
 #endif

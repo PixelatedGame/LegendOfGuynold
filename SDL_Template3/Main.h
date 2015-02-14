@@ -14,6 +14,7 @@
 #include "sprite.h"
 #include "Entity.h"
 #include "gui.h"
+#include "attack.h"
 #include "res_path.h"
 #include "Menu.h"
 //#include "texture.h"

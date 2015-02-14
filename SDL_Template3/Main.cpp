@@ -220,6 +220,9 @@ void Game::update() {
 		else if (keys[SDLK_DOWN]) {
 			hero->move(0, 2);
 		}
+		else if (keys[SDLK_z]){
+			hero->attack();
+		}
 		Enemy->update();
 		//Enter to menu state:
 		if (keys[SDLK_ESCAPE]){
