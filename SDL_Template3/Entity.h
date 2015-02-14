@@ -6,9 +6,10 @@
 #include "Sprite.h"
 
 
-class Entity : Sprite{
+class Entity : public Sprite{
+private:
 	int current_lives, current_zen;
-	location current_location;
+	location *current_location;
 	void init(int live, int zen);
 public:
 	Entity(int x_location, int y_location, int live = 1, int zen = 0, std::string entity_file = "sprite.png");

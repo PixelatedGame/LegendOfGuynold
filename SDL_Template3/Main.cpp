@@ -36,7 +36,7 @@ private:
 	enum state  : int { MENU, GAME };
 	int current_state = GAME;
 	Menu * mymenu;
-	Sprite * hero;
+	Entity * hero;
 	Sprite * Enemy;
 	
 	
@@ -79,7 +79,7 @@ void Game::start() {
 
 	//Mix_FreeChunk(music);
 
-	hero = new Sprite(0, 0);
+	hero = new Entity(0, 0);
 	Enemy = new Sprite(200, 200);
 	mymenu = new Menu();
 
