@@ -1,4 +1,8 @@
 #include "Menu.h"
+#include "Sprite.h"
+#include "texture.h"
+#include "res_path.h"
+#include "globals.h"
 
 Menu::Menu(){
 
@@ -16,7 +20,7 @@ Menu::Menu(){
 }
 
 void Menu::move(int upanddown){
-	int min=0, max;
+	int min=0, max=0;
 	switch (mode)
 	{
 	case 0:

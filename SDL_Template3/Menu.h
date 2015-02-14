@@ -6,9 +6,8 @@
 #include <SDL.h>
 #include <string>
 #include <map>
-#include "texture.h"
-#include "res_path.h"
-#include "globals.h"
+#include <vector>
+
 
 class Menu{
 	

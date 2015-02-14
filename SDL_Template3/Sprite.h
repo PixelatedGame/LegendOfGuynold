@@ -1,11 +1,14 @@
-#pragma once
+
 #ifndef SPRITE_H
 #define SPRITE_H
 
 #include <SDL.h>
 #include <string>
+#include <vector>
 #include "texture.h"
-#include "res_path.h"
+
+
+
 
 class Sprite {
 private:
@@ -33,6 +36,7 @@ public:
 	Sprite(int x = 0, int y = 0, int w = 32, int h = 48, std::string sprite_file = "sprite.png");
 	void turnAnimation(int new_direction);
 };
+
 
 
 #endif 
