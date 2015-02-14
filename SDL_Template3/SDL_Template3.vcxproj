@@ -90,6 +90,7 @@
     <ClInclude Include="globals.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="love.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="res_path.h" />
